@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Form Sample</title>
+</head>
+
+<body>
+
+    <h1>Personal Financial Planner - ChatGPT - model=gpt-3.5-turbo</h1>
+
+    <form id="form">
+        <h2>Question</h2>
+		<br>
+        <textarea id="question" name="mytextarea" rows="4" cols="50"></textarea>
+		<br>
+        <button type="submit" name="button">Submit</button>
+    </form>
+    
+    <div id="output_q"></div>
+	<div id="output_a"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#form').on('submit',function(e){
+            $.ajax({
+            data : {
+                question : $('#question').val()
+            },
+            type : 'POST',
+            url : '/'
+            })
+            .done(function(data){
+			$('#output_q').text(data.new_question).show();
+            $('#output_a').text(data.output).show();
+            });
+            e.preventDefault();
+        });
+    });
+    </script>
+    
+</body>
+</html>
