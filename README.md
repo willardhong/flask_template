@@ -1,4 +1,6 @@
 # flask_template
 Setting up template for later projects
 
-Starter template for future projects using Flask
+Use this template for future projects uing the Flask framework
+
+
