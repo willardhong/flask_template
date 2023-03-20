@@ -2,13 +2,14 @@ from flask import Flask, jsonify, render_template, request
 import os
 
 import openai
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
 app = Flask(__name__)
 
 # load values from the .env file if it exists
-load_dotenv()
-
+#load_dotenv()
+OPENAI_API_KEY="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"
+openai.api_key = OPENAI_API_KEY
 INSTRUCTIONS = """You are an AI assistant that is an expert in personal financial planning.
 You know about savings, spending, and investing.
 You know how to take advantage of retirement accounts such as IRA, rollover, and Roth IRA.
@@ -117,7 +118,7 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
     
     
     
